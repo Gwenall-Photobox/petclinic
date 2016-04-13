@@ -13,12 +13,11 @@ node {
     def appImg = docker.build("nicolas-deloof/petclinic")
 
     
-    stage 'Run app on Kubernetes'
-    withKubernetes( serverUrl: 'https://52.50.54.175', credentialsId: 'admin' ) {
-          sh 'kubectl run petclinic --image=gcr.io/nicolas-deloof/petclinic --port=8080'
-    }
+//    stage 'Run app on Kubernetes'
+//    withKubernetes( serverUrl: 'https://52.50.54.175', credentialsId: 'admin' ) {
+//          sh 'kubectl run petclinic --image=gcr.io/nicolas-deloof/petclinic --port=8080'
+//    }
 
     // ... Do some tests on deployed application web UI
 
 }
-
