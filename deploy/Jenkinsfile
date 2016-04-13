@@ -1,5 +1,5 @@
 node {
-    
+    echo 'Pipeline'    
     stage 'Checkout'
     git "https://github.com/Gwenall-Photobox/petclinic.git"
 
