@@ -7,14 +7,7 @@ node('amazon-ecs-docker-default'){
     stage 'Checkout'
     git "https://github.com/Gwenall-Photobox/${project}.git"
 
-    stage 'Build application war file'
-    // Build petclinic in a Maven3+JDK8 Docker container
-    docker.image('maven:3-jdk-8').inside('-v /.m2:/root/.m2') {
-        sh 'mvn -B package -DskipTests'
-    }
-
     stage 'Build application Docker image'
-    def img = docker.build("${docker-repo}/${project}:${env.BUILD_TAG}")
     sh(echo kuberctl parameters )
     sh(kubectl create  -f kubernetes )
 }
