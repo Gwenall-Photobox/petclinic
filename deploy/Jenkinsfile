@@ -1,4 +1,4 @@
-node('amazon-ecs-docker-default'){
+node('amazon-ecs-docker (i-7e52c4f4)'){
     
     def cluster = 'aws'
     def zone = 'eu-west-1'
