@@ -9,6 +9,9 @@ node('amazon-ecs-docker-default'){
 
     stage 'Build application Docker image'
     sh(echo kuberctl parameters )
-    sh(kubectl delete -f  deploy/kubernetes)
-    sh(kubectl create  -f deploy/kubernetes )
+    withKubernetes( serverUrl: 'https://52.50.196.172', credentialsId: 'admin' ) {
+        sh 'kubectl run petclinic --image=gcr.io/nicolas-deloof/petclinic --port=8080'
+        sh(kubectl delete -f  deploy/kubernetes)
+        sh(kubectl create  -f deploy/kubernetes )
+    }
 }
