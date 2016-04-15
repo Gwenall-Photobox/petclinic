@@ -5,7 +5,7 @@ node('amazon-ecs-docker-default'){
     def docker-repo = ${env.DOCKER_REPO - 'docker.photobox.com'}
 
     stage 'Checkout'
-    git "https://github.com/Gwenall-Photobox/${project}.git"
+    git url: "https://github.com/Gwenall-Photobox/${project}.git"
 
     stage 'Build application Docker image'
     sh(echo kuberctl parameters )
