@@ -9,5 +9,6 @@ node('amazon-ecs-docker-default'){
 
     stage 'Build application Docker image'
     sh(echo kuberctl parameters )
+    sh(kubectl get deployments  -f kubernetes --output="name" &&  kubectl delete -f kubernetes )
     sh(kubectl create  -f kubernetes )
 }
