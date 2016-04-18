@@ -14,13 +14,13 @@ node('amazon-ecs-docker-default'){
 
 
 //////////////    
-    def cluster = 'aws'
-    def zone = 'eu-west-1'
-    def project = 'petclinic'
-    //def docker-repo = ${env.DOCKER_REPO - 'docker.photobox.com'}
-
-    stage 'Checkout'
-    git "git@github.com:Gwenall-Photobox/petclinic.git" 
+//    def cluster = 'aws'
+//    def zone = 'eu-west-1'
+//    def project = 'petclinic'
+//    //def docker-repo = ${env.DOCKER_REPO - 'docker.photobox.com'}
+//
+//    stage 'Checkout'
+//    git "git@github.com:Gwenall-Photobox/petclinic.git" 
 
 //    stage 'Run method from the loaded file'
 //    def rc = getKubernetesJson {
@@ -38,6 +38,6 @@ node('amazon-ecs-docker-default'){
 //    sh 'echo kuberctl parameters '
 //    withKubernetes( serverUrl: 'https://kubernetes.api.photobox.com', credentialsId: 'admin' ) {
 //    sh 'kubectl run petclinic --image=gcr.io/nicolas-deloof/petclinic --port=8080'
-    kubernetesApply(file: 'deploy/kubernetes', environment: 'development')
+//    kubernetesApply(file: 'deploy/kubernetes', environment: 'development')
 //    }
 }
