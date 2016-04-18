@@ -1,43 +1,8 @@
 node('amazon-ecs-docker-default'){
-//    def helloworld = fileLoader.fromGit('init.groovy',
-//                                'git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '')
     def environment = 'development'
-    def init, helloworld
-        fileLoader.withGit('git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '') {
-            init = fileLoader.load('init.groovy');
-            kubernetes = fileLoader.load('deployments/kubernetes/default.groovy');
-        //environment = fileLoader.load('examples/fileLoader/environment');
+    def init
+    fileLoader.withGit('git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '') {
+        init = fileLoader.load('init.groovy');
     }
-    
     init.init()
-    kubernetes.init()
-
-
-//////////////    
-//    def cluster = 'aws'
-//    def zone = 'eu-west-1'
-//    def project = 'petclinic'
-//    //def docker-repo = ${env.DOCKER_REPO - 'docker.photobox.com'}
-//
-//    stage 'Checkout'
-//    git "git@github.com:Gwenall-Photobox/petclinic.git" 
-
-//    stage 'Run method from the loaded file'
-//    def rc = getKubernetesJson {
- //       port = 8080
-  //      label = 'swift'
-   //     icon = 'https://cdn.rawgit.com/fabric8io/fabric8-console/master/img/icons/swift.png'
-    //    version = newVersion
-     //   imageName = clusterImageName
-    ///}
-
-//    stage 'Rolling upgrade Development'
-//    kubernetesApply(file: rc, environment: 'development')
-
-/////
-//    sh 'echo kuberctl parameters '
-//    withKubernetes( serverUrl: 'https://kubernetes.api.photobox.com', credentialsId: 'admin' ) {
-//    sh 'kubectl run petclinic --image=gcr.io/nicolas-deloof/petclinic --port=8080'
-//    kubernetesApply(file: 'deploy/kubernetes', environment: 'development')
-//    }
 }
