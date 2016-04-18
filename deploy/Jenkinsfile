@@ -22,14 +22,14 @@ node('amazon-ecs-docker-default'){
     stage 'Checkout'
     git "git@github.com:Gwenall-Photobox/petclinic.git" 
 
-    stage 'Run method from the loaded file'
-    def rc = getKubernetesJson {
-        port = 8080
-        label = 'swift'
-        icon = 'https://cdn.rawgit.com/fabric8io/fabric8-console/master/img/icons/swift.png'
-        version = newVersion
-        imageName = clusterImageName
-    }
+//    stage 'Run method from the loaded file'
+//    def rc = getKubernetesJson {
+ //       port = 8080
+  //      label = 'swift'
+   //     icon = 'https://cdn.rawgit.com/fabric8io/fabric8-console/master/img/icons/swift.png'
+    //    version = newVersion
+     //   imageName = clusterImageName
+    ///}
 
 //    stage 'Rolling upgrade Development'
 //    kubernetesApply(file: rc, environment: 'development')
