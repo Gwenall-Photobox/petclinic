@@ -1,14 +1,18 @@
 node('amazon-ecs-docker-default'){
 //    def helloworld = fileLoader.fromGit('init.groovy',
 //                                'git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '')
-
+    def environment = 'development'
     def environment, helloworld
         fileLoader.withGit('git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '') {
-            helloworld = fileLoader.load('init.groovy');
+            init = fileLoader.load('init.groovy');
+            kubernetes = fileLoader.load('deployments/kubernetes/default.groovy');
         //environment = fileLoader.load('examples/fileLoader/environment');
     }
     
-    helloworld.init()
+    init.init()
+    kubernetes.init()
+
+
 //////////////    
 //    def cluster = 'aws'
 //    def zone = 'eu-west-1'
