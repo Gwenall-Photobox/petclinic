@@ -1,4 +1,10 @@
 node('amazon-ecs-docker-default'){
+    def helloworld = fileLoader.fromGit('init.groovy',
+                                'https://github.com/photobox/photobox-jenkins-pipelines.git', 'master', null, '')
+
+    
+    helloworld.dumpEnvVars()
+    
     def cluster = 'aws'
     def zone = 'eu-west-1'
     def project = 'petclinic'
@@ -7,15 +13,8 @@ node('amazon-ecs-docker-default'){
     stage 'Checkout'
     git "git@github.com:Gwenall-Photobox/petclinic.git" 
 
-    stage 'Build application Docker image'
-    stage 'Load a file from GitHub'
-    def helloworld = fileLoader.fromGit('examples/fileLoader/helloworld', 
-                    'https://github.com/jenkinsci/workflow-remote-loader-plugin.git', 'master', null, '')
     stage 'Run method from the loaded file'
-    helloworld.printHello()
 
-
-    
 
 //    sh 'echo kuberctl parameters '
 //    withKubernetes( serverUrl: 'https://kubernetes.api.photobox.com', credentialsId: 'admin' ) {
