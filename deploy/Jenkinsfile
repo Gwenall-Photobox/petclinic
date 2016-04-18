@@ -1,7 +1,12 @@
 node('amazon-ecs-docker-default'){
-    def helloworld = fileLoader.fromGit('init.groovy',
-                                'git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '')
+//    def helloworld = fileLoader.fromGit('init.groovy',
+//                                'git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '')
 
+    def environment, helloworld
+        fileLoader.withGit('git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '') {
+            helloworld = fileLoader.load('init.groovy');
+        //environment = fileLoader.load('examples/fileLoader/environment');
+    }
     
     helloworld.dumpEnvVars()
     
