@@ -9,16 +9,16 @@ node('amazon-ecs-docker-default'){
     }
     
     helloworld.dumpEnvVars()
-    
-    def cluster = 'aws'
-    def zone = 'eu-west-1'
-    def project = 'petclinic'
-    //def docker-repo = ${env.DOCKER_REPO - 'docker.photobox.com'}
-
-    stage 'Checkout'
-    git "git@github.com:Gwenall-Photobox/petclinic.git" 
-
-    stage 'Run method from the loaded file'
+//////////////    
+//    def cluster = 'aws'
+//    def zone = 'eu-west-1'
+//    def project = 'petclinic'
+//    //def docker-repo = ${env.DOCKER_REPO - 'docker.photobox.com'}
+//
+//    stage 'Checkout'
+//    git "git@github.com:Gwenall-Photobox/petclinic.git" 
+//
+//    stage 'Run method from the loaded file'
 
 
 //    sh 'echo kuberctl parameters '
