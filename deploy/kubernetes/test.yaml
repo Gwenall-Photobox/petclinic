@@ -1,19 +1,19 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: "test-gwen"
+  name: "test-gwenall"
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-        name: "test-gwen"
-        app: "test-gwen"
+        name: "test-gwenall"
+        app: "test-gwenall"
         track: "stable"
         tier: "api"
     spec:
       containers:
-        - name: "test-gwen"
+        - name: "test-gwenall"
           image: "tomcat"
           ports:
             - containerPort: 8080
