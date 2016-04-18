@@ -8,7 +8,7 @@ node('amazon-ecs-docker-default'){
         //environment = fileLoader.load('examples/fileLoader/environment');
     }
     
-    helloworld.dumpEnvVars()
+    helloworld.init()
 //////////////    
 //    def cluster = 'aws'
 //    def zone = 'eu-west-1'
