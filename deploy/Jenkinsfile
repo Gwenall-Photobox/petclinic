@@ -5,7 +5,7 @@ node('amazon-ecs-docker-default'){
     def init, helloworld
         fileLoader.withGit('git@github.com:photobox/photobox-jenkins-pipelines.git', 'master', null, '') {
             init = fileLoader.load('init.groovy');
-            kubernetes = fileLoader.load('deployments/kubernetes/default.groovy');
+      //      kubernetes = fileLoader.load('deployments/kubernetes/default.groovy');
         //environment = fileLoader.load('examples/fileLoader/environment');
     }
     
