@@ -2,7 +2,7 @@ node('amazon-ecs-docker-default'){
     def cluster = 'aws'
     def zone = 'eu-west-1'
     def project = 'petclinic'
-    def docker-repo = ${env.DOCKER_REPO - 'docker.photobox.com'}
+    //def docker-repo = ${env.DOCKER_REPO - 'docker.photobox.com'}
 
     stage 'Checkout'
     git "git@github.com:Gwenall-Photobox/petclinic.git" 
