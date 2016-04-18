@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: "test-potato"
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: "test-potato"
+        app: "test-potato"
+        track: "stable"
+        tier: "api"
+    spec:
+      containers:
+        - name: "test-potato"
+          image: "tomcat"
+          ports:
+            - containerPort: 8080
+              protocol: "TCP"
+          env:
+            - name: ENVIRONMENT
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+#          lifecycle:
+#            preStop:
+#              exec:
+#                command: ["/usr/sbin/nginx","-s","quit"]
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+              httpHeaders:
+                - name: "X-Health-Check"
+                  value: "Kubernetes-liveness-probe"
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+              httpHeaders:
+                - name: "X-Health-Check"
+                  value: "Kubernetes-readiness-probe"
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+          volumeMounts:
+      volumes:
